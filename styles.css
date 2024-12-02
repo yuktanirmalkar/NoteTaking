@@ -1,0 +1,341 @@
+/* Basic Reset */
+body, h1, input, button, textarea, select {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General Styles */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: lightcyan;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgba(11, 2, 29, 0.775);
+  padding: 10px;
+}
+
+/* Header */
+header {
+  position: fixed;
+  width: 95%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #6200ee, #9c27b0);
+  color: white;
+ 
+  
+}
+
+header input {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  
+}
+
+header button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: white;
+  color: #6200ee;
+  font-weight: bold;
+ 
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header button:hover {
+  background-color: #6200ee;
+  color: white;
+}
+
+/* Sidebar */
+aside {
+  width: 200px;
+  
+  float: left;
+  margin-left: -220px;
+  background: linear-gradient(45deg, #6200ee, #9c27b0);
+  border-radius: 10px 0 0 10px;
+  box-shadow: 2px 0px 6px rgba(0, 0, 0, 0.1);
+  color: pink;
+
+  margin-top:105px;
+  
+  
+}
+
+aside ul {
+  list-style: none;
+  padding: 10px;
+}
+
+aside li {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+aside li:hover {
+  background-color: #e0e0e0;
+  color: #6200ee;
+}
+
+aside li.active {
+  background-color: #6200ee;
+  color: white;
+  font-weight: bold;
+}
+
+/* Notes Section */
+main {
+  margin-left: 220px;
+  padding: 10px;
+}
+
+.notes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  
+}
+
+.note {
+  margin-top:65px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-height: 200px; /* Optional: Adjust the maximum height */
+  overflow: auto; /* Ensures scrollbars appear if content exceeds the container's height */
+}
+.note:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.note h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.note .delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.note[data-category="work"] {
+  background-color: #ffeb3b;
+}
+
+.note[data-category="personal"] {
+  background-color: #ff5722;
+}
+
+.note[data-category="urgent"] {
+  background-color: #f44336;
+}
+
+/* Add Note Button */
+#add-note {
+  position: fixed;
+  bottom: 50px;
+  right:50px;
+  padding: 50px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #6200ee, #03a9f4);
+  color: white;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#add-note:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  animation: slide-down 0.5s ease;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-content input, .modal-content textarea, .modal-content select {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-mode header {
+  background-color: #444;
+}
+
+.dark-mode .note {
+  background-color: #444;
+  color: black;
+  border: 1px solid #666;
+}
+
+.dark-mode #add-note {
+  background-color: #444;
+}
+
+.dark-mode aside {
+  background-color: #555;
+  color: white;
+}
+
+/* Transitions */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Animations */
+@keyframes slide-down {
+  from {
+    transform: translate(-50%, -60%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+textarea{
+    width: 500px;
+    height: 200px;
+
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 2px solid #8c53ff;
+    overflow: hidden;
+}
+ #search{
+  width:500px;
+  height: 50px;;
+ }
+
+ #theme-toggle{
+  right: 10px;
+  padding: 10px;
+  border-radius: 10%;
+  background: linear-gradient(45deg, #6200ee, #03a9f4);
+  color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+ }
+/* Responsive Styles */
+@media (max-width: 768px) {
+  aside {
+    margin-left: 1%;
+  }
+
+  main {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .notes-container {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #add-note {
+    bottom: 20px;
+    right: 20px;
+    padding: 20px;
+    font-size: 20px;
+  }
+
+  #search {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 10px;
+  }
+
+  header button {
+    padding: 5px;
+  }
+
+  .note {
+    padding: 5px;
+  }
+
+  .note h3 {
+    font-size: 1rem;
+  }
+
+  #add-note {
+    padding: 15px;
+    font-size: 18px;
+
+  }
+
+  textarea {
+    width: 100%;
+    height: 150px;
+  }
+
+  #search {
+    width: 100%;
+    height: 40px;
+  }
+
+  #theme-toggle {
+    padding: 5px;
+    font-size: 16px;
+  }
+}
